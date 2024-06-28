@@ -1,0 +1,245 @@
+{
+	"id": "08a24ed396666fed112ff5778a28e98d",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.24",
+	"solcLongVersion": "0.8.24+commit.e11b9ed9",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"Callback.sol": {
+				"content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.24;\r\n\r\ninterface ITest {\r\n    function val() external view returns (uint256);\r\n    function test() external ;\r\n}\r\n\r\n\r\n// contract Callback{\r\n//     uint256 public val;\r\n//     fallback() external  {\r\n//         val = ITest(msg.sender).val();\r\n//      }\r\n\r\n//      function test(address target) external  {\r\n//         ITest(target).test();\r\n//      }\r\n// }\r\n\r\n// contract TestStorage{\r\n//     uint256 public  val;\r\n\r\n//     function test() public {\r\n//         val = 132;\r\n//         bytes memory b = \"\";\r\n//         msg.sender.call(b);\r\n//     }\r\n// }\r\n\r\n// contract TestTransientStorage{\r\n//     bytes32 constant SLOT = 0;\r\n\r\n//     function test() public {\r\n//         assembly{\r\n//             tstore(SLOT,312)\r\n//         }\r\n//         bytes memory b = \"\";\r\n//         msg.sender.call(b);\r\n//     }\r\n\r\n//     function val() public  view returns (uint256 v){\r\n//         assembly{\r\n//             v := tload(SLOT)\r\n//         }\r\n//     }\r\n// }\r\n\r\n// contract ReentrancyGuard{\r\n//     bool private locked;\r\n\r\n//     modifier lock(){\r\n//         require(!locked);\r\n//         locked = true;\r\n//         _;\r\n//         locked = false;\r\n//     }\r\n// }\r\n\r\n// contract ReentrancyGuardTransient{\r\n//     bytes32 constant SLOT = 0;\r\n//     modifier lock(){\r\n//       assembly {\r\n//             if tload(SLOT) { revert(0, 0) }\r\n//             tstore(SLOT, 1)\r\n//         }\r\n//         _;\r\n//         assembly {\r\n//             tstore(SLOT, 0)\r\n//         }\r\n//     }\r\n\r\n//     function test() external lock{\r\n//         // ignore call  error\r\n//         bytes memory b = \"\";\r\n//         msg.sender.call(b);\r\n//     }\r\n// }"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"contracts": {
+			"Callback.sol": {
+				"ITest": {
+					"abi": [
+						{
+							"inputs": [],
+							"name": "test",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						},
+						{
+							"inputs": [],
+							"name": "val",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"test()": "f8a8fd6d",
+							"val()": "3c6bb436"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.24+commit.e11b9ed9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"test\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"val\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"Callback.sol\":\"ITest\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"Callback.sol\":{\"keccak256\":\"0x152fae50c78ce2a4b840f0c9d175534df95ed758355e5ccd511163d7ebc489b1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6631cdf6ab511ca3a6271b838f68304cd115fb93241ce1aca3d5306b6724b305\",\"dweb:/ipfs/QmXTLKrofUEPHb7VTZ9z6gkSQKMkZgnNi6E9S5rM8ogqz8\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"Callback.sol": {
+				"ast": {
+					"absolutePath": "Callback.sol",
+					"exportedSymbols": {
+						"ITest": [
+							10
+						]
+					},
+					"id": 11,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".24"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "33:24:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "ITest",
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"fullyImplemented": false,
+							"id": 10,
+							"linearizedBaseContracts": [
+								10
+							],
+							"name": "ITest",
+							"nameLocation": "71:5:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"functionSelector": "3c6bb436",
+									"id": 6,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "val",
+									"nameLocation": "93:3:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 2,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "96:2:0"
+									},
+									"returnParameters": {
+										"id": 5,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 4,
+												"mutability": "mutable",
+												"name": "",
+												"nameLocation": "-1:-1:-1",
+												"nodeType": "VariableDeclaration",
+												"scope": 6,
+												"src": "122:7:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 3,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "122:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "121:9:0"
+									},
+									"scope": 10,
+									"src": "84:47:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"functionSelector": "f8a8fd6d",
+									"id": 9,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "test",
+									"nameLocation": "146:4:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 7,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "150:2:0"
+									},
+									"returnParameters": {
+										"id": 8,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "162:0:0"
+									},
+									"scope": 10,
+									"src": "137:26:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 11,
+							"src": "61:105:0",
+							"usedErrors": [],
+							"usedEvents": []
+						}
+					],
+					"src": "33:1638:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}
