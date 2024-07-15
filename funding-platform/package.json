@@ -2,11 +2,12 @@
   "name": "hardhat-project",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/hardhat-upgrades": "^3.2.0",
     "hardhat": "^2.22.6"
   },
   "dependencies": {
     "@openzeppelin/contracts-upgradeable": "^5.0.2",
-    "@openzeppelin/hardhat-upgrades": "^3.2.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "web3": "^4.11.0"
   }
 }

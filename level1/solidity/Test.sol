@@ -2,6 +2,8 @@
 pragma solidity ^0.8.17;
 
 contract Test{
+    address addr;
+
 
     function getCode() public view  returns ( bytes memory ){
         return address(this).code;

@@ -6,7 +6,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "./project.sol";
 
-contract CrowdFundingPlatform is
+contract CrowdFundingPlatformV2 is
     Initializable,
     UUPSUpgradeable,
     OwnableUpgradeable
@@ -38,7 +38,7 @@ contract CrowdFundingPlatform is
         string memory _description,
         uint256 _goalAmount,
         uint256 _duration
-    ) public {
+    ) public returns (address) {
         Project newProject = new Project();
         newProject.initialize(msg.sender, _description, _goalAmount, _duration);
         projects.push(address(newProject));
@@ -50,10 +50,19 @@ contract CrowdFundingPlatform is
             _goalAmount,
             block.timestamp + _duration
         );
+        return address(newProject);
     }
 
     // 获取众筹项目集合
     function getProjects() public view returns (address[] memory) {
         return projects;
+    }
+
+    function closeProjects() public  {
+        projects = new address[](0);
+    }
+
+    function getProjectCount() public view returns(uint256) {
+        return projects.length;
     }
 }

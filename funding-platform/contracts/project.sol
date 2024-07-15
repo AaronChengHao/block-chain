@@ -1,38 +1,59 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
 
-
+// 众筹项目合约
 contract Project{
+    
+    // 定义项目状态集合枚举
     enum ProjectState{ Ongoing, Successful, Failed}
-
+    
+    // 资助结构体
     struct Donation{
         address donor;
         uint256 amount;
     }
 
+    // 创建者
     address public creator;
+    
+    // 项目介绍
     string public description;
+
+    // 需要筹集资金
     uint256 public goalAmount;
+
+    // 截止时间
     uint256 public deadline;
+
+    // 当前筹集资金
     uint256 public currentAmount;
+
+    // 合约当前状态
     ProjectState public state;
+
+    // 资金记录集合
     Donation[] public donations;
 
+    // 资助事件
     event DonationReceived(address indexed donor, uint256 amount);
+    // 项目状态改变事件
     event ProjectStateChanged(ProjectState newState);
+    // 提款事件
     event FundsWithdrawn(address indexed creator,uint256 amount);
+    // 退款事件
     event FundsRefunded(address indexed donor, uint256 amount);
 
+    // 创建者校验
     modifier onlyCreator(){
         require(msg.sender == creator, "Not the project creator");
         _;
     }
-
+    // 截止时间校验
     modifier onlyAfterDeadline(){
-        require(block.timestamp >= deadline, "Project is still ongoing");
+        require(block.timestamp < deadline, "Project is still ongoing");
         _;
     }
-
+    // 合约初始化
     function initialize(address _creator, string memory _description, uint256 _goalAmount, uint256 _duration) public {
         creator = _creator;
         description = _description;
@@ -41,9 +62,8 @@ contract Project{
         state = ProjectState.Ongoing;
     }
 
-
     // 捐款
-    function donate()external payable  {
+    function donate()public payable  {
         require(state == ProjectState.Ongoing,"Project is not ongoing");
         require(block.timestamp < deadline, "Peoject deadline has passed");
 
@@ -104,5 +124,9 @@ contract Project{
         emit ProjectStateChanged(state);
     }
 
+    // 获取捐款记录
+    function getDonations()public view returns(Donation[] memory) {
+        return donations;
+    }
 
 }
